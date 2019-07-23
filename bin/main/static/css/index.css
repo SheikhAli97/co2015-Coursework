@@ -1,0 +1,60 @@
+/** Helper margin class */
+.bot-margin {
+    margin-bottom: 20px;
+}
+
+header {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/background.jpeg") no-repeat center;
+    background-position-y: -100px;
+    background-size: cover;
+    position: relative;
+    height: 100vh;
+}
+
+li.active a {
+    color: #ffc107
+}
+
+#brand {
+    color: #ffc107;
+    font-weight: bold;
+    font-size: x-large;
+    font-family: 'Kaushan Script', serif;
+}
+
+.custom-font {
+    font-family: 'Lato', Arial, sans-serif;
+}
+
+.bot-margin {
+    margin-bottom: 20px;
+}
+
+header {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/background.jpeg") no-repeat center;
+    background-position-y: -100px;
+    background-size: cover;
+    position: relative;
+    height: 100vh;
+}
+
+li.active a {
+    color: #ffc107
+}
+
+.color-1 {
+    background-color: #008bff;
+}
+
+.color-2 {
+    background-color: #ff5a5f;
+}
+
+.color-3 {
+    background-color: #a72478;
+}
+
+.color-4 {
+    background-color: #51ce7e;
+
+}

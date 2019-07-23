@@ -1,0 +1,13 @@
+language: java
+
+services:
+  - mysql
+
+before_script:
+  - mysql -e 'CREATE DATABASE group10_database;'
+  - mv src/main/resources/travis.properties src/main/resources/application.properties
+  - cat src/main/resources/application.properties
+
+script:
+- gradle build -i
+

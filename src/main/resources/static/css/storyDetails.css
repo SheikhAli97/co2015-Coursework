@@ -1,0 +1,209 @@
+body , html{
+    font-family: Lato,Arial,sans-serif;
+    height: 100%;
+}
+
+/** storalate branding **/
+#brand {
+    color: #ffc107;
+    font-weight: bold;
+    font-size: x-large;
+    font-family: 'Kaushan Script', serif;
+}
+
+/** Positioning background image and unblurred content image **/
+
+.background-image {
+    /*background-image: url('../images/background.jpeg');*/
+    background-size: cover;
+    filter: blur(20px);
+    -webkit-filter: blur(20px);
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.content {
+    background: transparent;
+    border-radius: 3px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    top: 140px;
+    right: 0px;
+    z-index: 2;
+}
+
+/** image styling **/
+.image-container img {
+    max-width: 300px;
+    height: 400px;
+}
+
+
+
+/** =========== End Side container Styling ========= **/
+
+/** ====================== Section on styling the icons under the story picture ====================== **/
+
+/** styles shared by all buttons **/
+.contribute-button, .fav-button, .branch-button{
+    border-radius: 33px;
+    width: 53px;
+    height: 53px;
+    position: absolute;
+    top: 20px;
+    z-index: 2;
+}
+
+/** position from the right and background specific to each**/
+
+/** background color for each button **/
+
+
+.branch-button, .contribute-button,.fav-button{
+    background-color: #558B2F;
+}
+
+/*.fav-button{*/
+    /*background-color: #51ce7e;*/
+/*}*/
+
+/*.contribute-button{*/
+    /*background-color: darkorange;*/
+/*}*/
+
+/*.branch-button{*/
+    /*background-color: red;*/
+/*}*/
+
+
+/** positions for each button **/
+
+.fav-button {
+    right: 126px;
+}
+
+.branch-button {
+    right: 3px;
+}
+
+.contribute-button{
+    right: 63px;
+}
+
+/** styling the icons in each button **/
+.fav-button i{
+    font-size: 33px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+}
+
+.branch-button i {
+    font-size: 34px;
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    color: white;
+}
+
+.contribute-button i {
+    font-size: 29px;
+    position: absolute;
+    top: 11px;
+    left: 13px;
+    color: white;
+}
+
+/** hover color **/
+.fav-button:hover,.branch-button:hover, .contribute-button:hover{
+    background-color: #6c757d;
+}
+
+/*.branch-button:hover .fas,.contribute-button:hover .fas {*/
+    /*color:#558B2F;*/
+/*}*/
+
+
+/** ====================== End of Styling Icons ====================== **/
+
+
+/** ====================== Start of story Section styling ====================== **/
+.story-title{
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.category-item{
+    background-color: #6c757d;
+    padding: 5px 7px;
+    border-radius: 20px;
+    font-size: 14px;
+    text-transform: lowercase;
+}
+
+
+.category-item a , .category-item a:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.story-stats {
+    font-weight: 400;
+    font-size: 22px;
+}
+
+.story-stats i {
+    font-size: 22px;
+}
+
+
+.story-stats span {
+    margin-right: 10px;
+}
+
+.segment-details{
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #4C4D4D;
+}
+
+.segment-contents p{
+    font-size: 22px;
+    line-height: 38px;
+    color:#000000;
+    min-height: 20px;
+    word-wrap: break-word;
+    white-space: pre-line;
+    font-weight: 100;
+}
+
+/**====================== End Story Section ======================**/
+
+.branch-group{
+    position:absolute;
+    top:490px;
+    right:5px;
+    display: none;
+    width: 100%;
+}
+
+.branch-link{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.branch-link i {
+    font-size: 16px;
+    display: none;
+}
+
+.branch-link a {
+    text-decoration: none !important;
+}
+.branch-link{
+    margin-top: 9px;
+}

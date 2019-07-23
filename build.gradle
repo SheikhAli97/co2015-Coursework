@@ -1,0 +1,108 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.7.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'jacoco'
+
+group = 'org.c02015'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    spockVersion = '1.1-groovy-2.4'
+}
+
+apply plugin: 'checkstyle'
+checkstyle {
+    toolVersion '8.15'
+    configFile file("$rootProject.projectDir/config/checkstyle/checkstyle.xml")
+
+    checkstyleMain {
+        source = 'src/main/java'
+    }
+
+    // checkStyle should not be imposed on test classes......
+    checkstyleTest.enabled = false
+}
+
+dependencies {
+    // Spring boot
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    runtimeOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // persistence == uncomment later on
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'mysql:mysql-connector-java'
+    runtimeOnly 'com.h2database:h2'
+
+    // antMatchers will be used for authorizing requests for guests, users etc.
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // security tag for jsp
+    implementation('org.springframework.security:spring-security-taglibs:4.0.4.RELEASE')
+
+    // json parsing library
+    implementation "org.json:json:20180813"
+
+    // JSP dependencies
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.10'
+    implementation 'javax.servlet:jstl:1.2'
+
+    // bootstrap
+    implementation 'org.webjars:bootstrap:3.3.7'
+
+    // spock tests.
+    testImplementation "junit:junit:4.12"
+    testImplementation "org.spockframework:spock-core:$spockVersion"
+    testImplementation "org.spockframework:spock-spring:$spockVersion"
+    testImplementation 'org.hamcrest:hamcrest-core:1.3'
+    testImplementation 'org.hamcrest:hamcrest-library:1.3'
+
+    // Groovy tests
+    testImplementation "org.codehaus.groovy:groovy-all:2.4.15"
+
+    // other tests
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    // avoiding already downloaded Groovy/Spock
+    testImplementation('com.athaydes:spock-reports:1.3.1') {
+        transitive = false
+    }
+}
+
+jacocoTestReport {
+    reports {
+        html.enabled true
+    }
+
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    '**/*WebConfig**',
+                    '**/*StoryWritingApplication**',
+                    '**/domain/*',
+                    '**/*ImgurUploader**'
+
+            ])
+        })
+    }
+}
+
+test.finalizedBy(project.tasks.jacocoTestReport)
+

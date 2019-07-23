@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC
+        "-//Checkstyle//DTD SuppressionFilter Configuration 1.3//EN"
+        "https://checkstyle.org/dtds/suppressions_1_2.dtd"
+        >
+<suppressions>
+    <!-- Excludes the main Application from all Checks -->
+    <suppress files="StoryWritingApplication.java" checks=".*"/>
+    <suppress files="WebConfig.java" checks=".*"/>
+    <!-- Utility classes flag -->
+    <suppress files="[\\/]utility[\\/]" checks=".*"/>
+    <!-- Ignore JavaDocVariable and WhitespaceAfter for Enum -->
+    <suppress files="Category.java" checks="JavadocVariable"/>
+    <suppress files="Category.java" checks="WhitespaceAfter"/>
+    <suppress files="Status.java" checks="JavadocVariable"/>
+
+</suppressions>

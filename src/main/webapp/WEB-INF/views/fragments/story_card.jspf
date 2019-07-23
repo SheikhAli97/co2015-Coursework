@@ -1,0 +1,40 @@
+<%-- This Fragment is the layout for each story-card that is displayed.
+     In between each tag add the value you'd like there, so if the main variable being passed in is a 'Story' Object
+     in between <h8> ${Story.getTitle()} </h8> would display the title of that story.
+--%>
+<c:choose>
+    <c:when test="${Story.getImageUrl() != null}">
+        <c:set var="imageURL" value="${Story.getImageUrl()}"/>
+    </c:when>
+    <c:otherwise>
+        <c:set var="imageURL" value="../images/default-horizontal.png"/>
+    </c:otherwise>
+</c:choose>
+<a href="/story/display?id=${Story.getId()}">
+    <div class="card  ${colorAttribute} text-white rounded-0 custom-font border-0">
+        <img class="card-img-top rounded-0" id="story-image" src="${imageURL}" alt="${Story.getTitle()} cover">
+        <div class="card-body">
+            <h5 class="card-title">${Story.getTitle()}</h5>
+
+            <c:choose>
+                <%-- if the root display the start--%>
+                <c:when test="${Story.getParent() == null}">
+                    <p class="card-text">${Story.getIntroduction()}.</p>
+                </c:when>
+                <%--if not the root display the last content--%>
+                <c:otherwise>
+                    <p class="card-text">${Story.getStoryExtracts().get(Story.getStoryExtracts().size() - 1).getContent()}...</p>
+
+                </c:otherwise>
+            </c:choose>
+            <c:if test="${Story.getStoryExtracts().size() == 0}">
+            </c:if>
+            
+
+        </div>
+        <div class="card-footer text-right">
+            <strong class="text-muted mr-2"><i class="fa fa-heart text-white"> ${Story.getLikeCount()}</i></strong>
+            <strong class="text-muted"><i class="fas fa-users text text-white"> ${Story.getContributorSize()}</i></strong>
+        </div>
+    </div>
+</a>
